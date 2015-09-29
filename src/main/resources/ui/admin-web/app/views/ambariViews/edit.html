@@ -1,0 +1,160 @@
+<!--
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+-->
+<div class="clearfix">
+  <ol class="breadcrumb pull-left">
+    <li><a href="#/views">Views</a></li>
+    <li class="active">{{instance.ViewInstanceInfo.label}} <a class="gotoinstance" ng-show="instance.ViewInstanceInfo.visible" href="/#/main{{instance.ViewInstanceInfo.context_path}}">Go to instance</a></li>
+  </ol>
+  <div class="pull-right top-margin-4" ng-switch="instance.ViewInstanceInfo.static">
+    <button ng-switch-when="true" class="btn disabled btn-default btn-delete-instance" tooltip="Cannot Delete Static Instances">Delete Instance</button>
+    <button ng-switch-when="false" class="btn btn-danger" ng-click="deleteInstance(instance)">Delete Instance</button>
+  </div>
+</div>
+<hr>
+<div class="panel panel-default" ng-cloak ng-show="instance">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Settings</h3>
+    <div class="pull-right" ng-switch="instance.ViewInstanceInfo.static">
+      <a href ng-switch-when="false" ng-click="toggleSettingsEdit()" ng-show="editSettingsDisabled" class="settings-edit-toggle"> <span class="glyphicon glyphicon-pencil" ></span> Edit</a>
+      <a href ng-switch-when="true" class="settings-edit-toggle disabled" tooltip="Cannot Edit Static Instances"> <span class="glyphicon glyphicon-pencil" ></span> Edit</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form class="form-horizontal" name="settingsForm" novalidate>
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">View Name</label>
+        <div class="col-sm-10"><input disabled="disabled" type="text" class="form-control instancename-input" placeholder="Display Name" value="{{instance.ViewInstanceInfo.view_name}}"></div>
+      </div>
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">View Version</label>
+        <div class="col-sm-10"><input disabled="disabled" type="text" class="form-control instancename-input" placeholder="Display Name" value="{{instance.ViewInstanceInfo.version}}"></div>
+      </div>
+      <fieldset ng-disabled="editSettingsDisabled">
+        <div class="form-group">
+          <label for="" class="col-sm-2 control-label">Instance Name</label>
+          <div class="col-sm-10"><input disabled="disabled" type="text" class="form-control instancename-input" placeholder="Display Name" value="{{instance.ViewInstanceInfo.instance_name}}"></div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : (settingsForm.displayName.$error.required || settingsForm.displayName.$error.pattern) && !editSettingsDisabled}">
+          <label for="" class="col-sm-2 control-label">Display Name</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control instancename-input" placeholder="Display Name" name="displayName" required ng-model="settings.label" ng-pattern="/^([a-zA-Z0-9._\s]+)$/">
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='settingsForm.displayName.$error.required  && !editSettingsDisabled'>
+              This field is required.
+            </div>
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='settingsForm.displayName.$error.pattern && !editSettingsDisabled'>
+              Must not contain any special characters.
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error' : settingsForm.description.$error.required  && !editSettingsDisabled}">
+          <label for="" class="control-label col-sm-2">Description</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="settings.description" name="description" placeholder="Instance Description" required>
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='settingsForm.description.$error.required  && !editSettingsDisabled'>
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="settings.visible" ng-class="instancevisibility-input"> Visible
+              </label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-hide="editSettingsDisabled">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary pull-right left-margin settingssave-btn" ng-click="saveSettings()">Save</button>
+            <button class="btn btn-default pull-right settingscancel-btn" ng-click="cancelSettings()">Cancel</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+
+<div class="panel panel-default views-permissions-panel" style="">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Permissions</h3>
+  </div>
+  <div class="panel-body">
+    
+
+    <table class="table" ng-show="!isPermissionsEmpty">
+      <thead>
+        <tr>
+          <th class="col-sm-2"><label>Permission</label></th>
+          <th><label>Grant permission to these users</label></th>
+          <th><label>Grant permission to these groups</label></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="permission in permissions">
+          <td>
+            <label class="" tooltip="{{permission.PermissionInfo.permission_name}}">{{permission.PermissionInfo.permission_name | translate}}</label>
+          </td>
+          <td>
+            <editable-list items-source="permissionsEdit[permission.PermissionInfo.permission_name].USER" editable="true" resource-type="User"></editable-list>
+          </td>
+          <td>
+            <editable-list items-source="permissionsEdit[permission.PermissionInfo.permission_name].GROUP" editable="true" resource-type="Group" ></editable-list>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div ng-show="isPermissionsEmpty">
+      <div class="alert alert-info">There are no permissions defined for this view.</div>
+    </div>
+  </div>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading clearfix">
+    <h3 class="panel-title pull-left">Properties</h3>
+    <div class="pull-right" ng-switch="instance.ViewInstanceInfo.static">
+      <a href ng-switch-when="false" ng-hide="isConfigurationEmpty" ng-click="togglePropertiesEditing()" ng-show="editConfigurationDisabled" class="properties-toggle"> <span class="glyphicon glyphicon-pencil"></span> Edit</a>
+      <a href ng-switch-when="true" ng-hide="isConfigurationEmpty"  class="properties-toggle disabled"> <span class="glyphicon glyphicon-pencil"></span> Edit</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <form name="propertiesForm" class="form-horizontal property-form" ng-hide="isConfigurationEmpty" novalidate>
+      <fieldset>
+        <div class="form-group" ng-repeat="property in configurationMeta" ng-class="{'has-error' : property.required && propertiesForm[property.name].$error.required && !editConfigurationDisabled}" tooltip="{{property.description}}">
+          <label for="" class="control-label col-sm-3" ng-class="{'not-required': !property.required}">{{property.name}}{{property.required ? '*' : ''}}</label>
+          <div class="col-sm-9">
+            <input type="{{property.masked ? 'password' : 'text'}}" class="form-control propertie-input" ng-required="property.required"  ng-disabled="editConfigurationDisabled" name="{{property.name}}" ng-model="configuration[property.name]">
+            <div class="alert alert-danger no-margin-bottom top-margin" ng-show='property.required && propertiesForm[property.name].$error.required && !editConfigurationDisabled'>
+              This field is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-hide="editConfigurationDisabled">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary pull-right left-margin propertie-save" ng-click="saveConfiguration()">Save</button>
+            <button class="btn btn-default pull-right propertie-cancel" ng-click="cancelConfiguration()">Cancel</button>
+          </div>
+        </div>
+      </fieldset>
+    </form>
+    <div ng-show="isConfigurationEmpty">
+      <div class="alert alert-info">There are no properties defined for this view.</div>
+    </div>
+  </div>
+</div>
