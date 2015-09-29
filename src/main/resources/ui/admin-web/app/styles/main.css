@@ -21,6 +21,33 @@
 /*
   ------ START editable-list DIRECTIVE SECTION ------ -
 */
+
+/* ***** MODIFY ***** */
+@font-face {
+    font-family: Octopus;
+    src: url(/font/Octopus_Wide_500.otf);
+}
+@font-face {
+    font-family: Dsignes Light;
+    src: url(/font/DsignesL.ttf);
+}
+@font-face {
+    font-family: Dsignes Bold;
+    src: url(/font/DsignesB.ttf);
+}
+
+html, body {
+  font-family: Dsignes Light;
+  font-style: bold;
+  height: 100%;
+  background: url('img/fondo_identidad.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
+/* ***** MODIFY ***** */
+
 .editable-list-container.well{
   padding: 10px;
   position: relative;
@@ -230,6 +257,8 @@
 .mainpage .panel-body #main-operations-boxes {
   padding: 10px;
 }
+
+/* ***** MODIFY ***** */
 .mainpage .panel-body #main-operations-boxes .thumbnail{
   display: block;
   height: 230px;
@@ -241,6 +270,8 @@
   border: none;
   border-radius: 0px;
 }
+/* ***** MODIFY ***** */
+
 .mainpage .panel-body #main-operations-boxes .thumbnail .title,
 .mainpage .panel-body #main-operations-boxes .thumbnail .description,
 .mainpage .panel-body #main-operations-boxes .thumbnail .buttons {
@@ -363,11 +394,14 @@ a.gotoinstance{
   -o-transform: translateY(2px);
   transform: translateY(2px);
 }
+
+/* ***** MODIFY ***** */
 .btn.deleteuser-btn.disabled, .btn.deleteuser-btn[disabled], .btn.btn-delete-instance.disabled, .btn-default.disabled{
   pointer-events: auto;
   cursor: not-allowed !important;
   background-color: #C2C3C8 !important;
 }
+/* ***** MODIFY ***** */
 
 .about .logo{
   float: left;
@@ -580,7 +614,23 @@ a.gotoinstance{
 
 ul.nav li > a{
   cursor: pointer;
+
 }
+
+/* ***** MODIFY ***** */
+a {
+  cursor: pointer;
+  font-family: Dsignes Light;
+  font-weight: bold;
+  color: #666484;
+}
+a:hover{
+  color: #FFFFFF;
+  background-color: #717175;
+  background-image: linear-gradient(to bottom, #717175, #717175);        
+  background-repeat: repeat-x;
+} 
+/* ***** MODIFY ***** */
 
 .admin-filter{
   cursor: pointer;
