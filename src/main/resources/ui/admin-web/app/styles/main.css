@@ -250,10 +250,16 @@ html, body {
   padding: 20px;
   height: 620px;
 }
+
+/* ***** MODIFY ***** */
 .mainpage h1{
   font-size: 24px;
   margin-top: 10px;
+  font-family: Dsignes Bold;  
+  color: #666484;
 }
+/* ***** MODIFY ***** */
+
 .mainpage .panel-body #main-operations-boxes {
   padding: 10px;
 }
@@ -270,10 +276,25 @@ html, body {
   border: none;
   border-radius: 0px;
 }
-/* ***** MODIFY ***** */
-
-.mainpage .panel-body #main-operations-boxes .thumbnail .title,
-.mainpage .panel-body #main-operations-boxes .thumbnail .description,
+.mainpage .panel-body #main-operations-boxes {  
+  line-height: 1.5;
+  font-family: Dsignes Light;
+  font-style: bold;  
+  color: #666484;
+}
+.mainpage .panel-body #main-operations-boxes .thumbnail .title {
+  text-align: center;
+  line-height: 1.5;
+  font-family: Dsignes Bold;  
+  color: #666484;
+}
+.mainpage .panel-body #main-operations-boxes .thumbnail .description {
+  text-align: center;
+  line-height: 1.5;
+  font-family: Dsignes Light;
+  font-style: bold;  
+  color: #666484;
+}
 .mainpage .panel-body #main-operations-boxes .thumbnail .buttons {
   text-align: center;
   line-height: 1.5;
@@ -311,9 +332,13 @@ html, body {
   border-radius: 0;
   border-top: 1px solid #ddd;
 }
+
+/* ***** MODIFY ***** */
 .views-list-table .panel-group .panel .panel-heading{
-  background: #f9f9f9;
+  background: #C2C3C8;
 }
+/* ***** MODIFY ***** */
+
 .views-list-table .panel-group .panel:nth-child(even) .panel-heading{
   background: none;
 }
@@ -401,19 +426,34 @@ a.gotoinstance{
   cursor: not-allowed !important;
   background-color: #C2C3C8 !important;
 }
-/* ***** MODIFY ***** */
 
 .about .logo{
   float: left;
   width: 20%;
+  img {
+    height: 32px;
+  }
 }
 .about .content{
   float: left;
+  font-family: Dsignes Bold;  
+  color: #666484;
 }
 .about .content .project{
+  font-family: Dsignes Light;  
+  color: #666484;
   font-weight: bold;
   font-size: 2em;
 }
+
+.about .content > a{
+  color: #666484;
+  text-decoration: none;
+}
+.about .content > a:hover{
+  color: #352B5B;
+}
+/* ***** MODIFY ***** */
 
 .breadcrumb{
   background: none;
@@ -523,10 +563,17 @@ a.gotoinstance{
 .left-navbar .panel{
   border-radius: 0;
 }
+
+/* ***** MODIFY ***** */
 .left-navbar .panel-heading {
   padding: 8px 15px;
   font-size: 15px;
+  font-family: Dsignes Bold;  
+  color: #666484;
+  background-color: #C2C3C8;
 }
+/* ***** MODIFY ***** */
+
 .left-navbar .panel-body {
   padding: 5px 15px;
   font-size: 14px;
@@ -549,12 +596,28 @@ a.gotoinstance{
 .left-navbar .panel-body li{
   margin: 0 -15px;
 }
+
+/* ***** MODIFY ***** */
 .left-navbar .panel-body li a{
   border-radius: 0;
   padding-left: 33px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: pointer;
+  font-family: Dsignes Light;
+  font-style: bold;
+  color: #666484;
 }
+
+.left-navbar .panel-body li.active > a,
+.left-navbar .panel-body li a:hover{
+  color: #FFFFFF;
+  background-color: #717175;
+  background-image: linear-gradient(to bottom, #717175, #717175);        
+  background-repeat: repeat-x;
+}  
+/* ***** MODIFY ***** */
+
 .left-navbar .panel-body li .noclusters{
   color: #808080;
   padding-left: 33px;
@@ -616,21 +679,6 @@ ul.nav li > a{
   cursor: pointer;
 
 }
-
-/* ***** MODIFY ***** */
-a {
-  cursor: pointer;
-  font-family: Dsignes Light;
-  font-weight: bold;
-  color: #666484;
-}
-a:hover{
-  color: #FFFFFF;
-  background-color: #717175;
-  background-image: linear-gradient(to bottom, #717175, #717175);        
-  background-repeat: repeat-x;
-} 
-/* ***** MODIFY ***** */
 
 .admin-filter{
   cursor: pointer;
@@ -843,7 +891,7 @@ table.no-border tr td{
 }
 
 
-
+/* ***** MODIFY ***** */
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
@@ -858,6 +906,7 @@ table.no-border tr td{
   border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
 }
 
+/*
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -891,6 +940,20 @@ table.no-border tr td{
 .btn-primary:active,
 .btn-primary.active {
   background-color: #003399 \9;
+}
+*/
+
+.btn-primary {
+    background: #666484;
+    color: #FFFFFF;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #352B5B;
+    color: #FFFFFF;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #312A4E;
+    box-shadow: none;
 }
 
 .btn-warning {
