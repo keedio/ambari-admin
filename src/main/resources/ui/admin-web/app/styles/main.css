@@ -453,14 +453,16 @@ a.gotoinstance{
 .about .content > a:hover{
   color: #352B5B;
 }
-/* ***** MODIFY ***** */
 
 .breadcrumb{
   background: none;
   font-size: 24px;
   margin: 0;
   padding: 0;
+  font-family: Dsignes Bold;  
+  color: #434142;
 }
+/* ***** MODIFY ***** */
 
 .user-edit-panel .ats-switch span.switch-right , .create-user-form .ats-switch span.switch-right{
   background-color: #da4f49;
@@ -628,9 +630,8 @@ a.gotoinstance{
 .left-navbar .panel-body li.active a{
   background: #666;
 }
-
 .search-container{
-  position: relative;
+  position: relative; 
 }
 .search-container .close{
   position: absolute;
@@ -736,6 +737,13 @@ table.no-border tr td{
 .table > thead > tr > th.vertical-top{
   vertical-align: top;
 }
+
+/* ***** MODIFY ***** */
+.table > thead {
+  font-family: Dsignes Bold;  
+  color: #434142;
+}
+/* ***** MODIFY ***** */
 
 .groups-pane table ul{
   list-style-type: none;
