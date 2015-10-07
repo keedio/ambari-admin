@@ -21,6 +21,33 @@
 /*
   ------ START editable-list DIRECTIVE SECTION ------ -
 */
+
+/* ***** MODIFY ***** */
+@font-face {
+    font-family: Octopus;
+    src: url(/font/Octopus_Wide_500.otf);
+}
+@font-face {
+    font-family: Dsignes Light;
+    src: url(/font/DsignesL.ttf);
+}
+@font-face {
+    font-family: Dsignes Bold;
+    src: url(/font/DsignesB.ttf);
+}
+
+html, body {
+  font-family: Dsignes Light;
+  font-style: bold;
+  height: 100%;
+  background: url('img/fondo_identidad.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
+/* ***** MODIFY ***** */
+
 .editable-list-container.well{
   padding: 10px;
   position: relative;
@@ -223,13 +250,21 @@
   padding: 20px;
   height: 620px;
 }
+
+/* ***** MODIFY ***** */
 .mainpage h1{
   font-size: 24px;
   margin-top: 10px;
+  font-family: Dsignes Bold;  
+  color: #666484;
 }
+/* ***** MODIFY ***** */
+
 .mainpage .panel-body #main-operations-boxes {
   padding: 10px;
 }
+
+/* ***** MODIFY ***** */
 .mainpage .panel-body #main-operations-boxes .thumbnail{
   display: block;
   height: 230px;
@@ -241,8 +276,25 @@
   border: none;
   border-radius: 0px;
 }
-.mainpage .panel-body #main-operations-boxes .thumbnail .title,
-.mainpage .panel-body #main-operations-boxes .thumbnail .description,
+.mainpage .panel-body #main-operations-boxes {  
+  line-height: 1.5;
+  font-family: Dsignes Light;
+  font-style: bold;  
+  color: #666484;
+}
+.mainpage .panel-body #main-operations-boxes .thumbnail .title {
+  text-align: center;
+  line-height: 1.5;
+  font-family: Dsignes Bold;  
+  color: #666484;
+}
+.mainpage .panel-body #main-operations-boxes .thumbnail .description {
+  text-align: center;
+  line-height: 1.5;
+  font-family: Dsignes Light;
+  font-style: bold;  
+  color: #666484;
+}
 .mainpage .panel-body #main-operations-boxes .thumbnail .buttons {
   text-align: center;
   line-height: 1.5;
@@ -280,9 +332,13 @@
   border-radius: 0;
   border-top: 1px solid #ddd;
 }
+
+/* ***** MODIFY ***** */
 .views-list-table .panel-group .panel .panel-heading{
-  background: #f9f9f9;
+  background: #C2C3C8;
 }
+/* ***** MODIFY ***** */
+
 .views-list-table .panel-group .panel:nth-child(even) .panel-heading{
   background: none;
 }
@@ -363,6 +419,8 @@ a.gotoinstance{
   -o-transform: translateY(2px);
   transform: translateY(2px);
 }
+
+/* ***** MODIFY ***** */
 .btn.deleteuser-btn.disabled, .btn.deleteuser-btn[disabled], .btn.btn-delete-instance.disabled, .btn-default.disabled{
   pointer-events: auto;
   cursor: not-allowed !important;
@@ -372,13 +430,28 @@ a.gotoinstance{
 .about .logo{
   float: left;
   width: 20%;
+  img {
+    height: 32px;
+  }
 }
 .about .content{
   float: left;
+  font-family: Dsignes Bold;  
+  color: #666484;
 }
 .about .content .project{
+  font-family: Dsignes Light;  
+  color: #666484;
   font-weight: bold;
   font-size: 2em;
+}
+
+.about .content > a{
+  color: #666484;
+  text-decoration: none;
+}
+.about .content > a:hover{
+  color: #352B5B;
 }
 
 .breadcrumb{
@@ -386,7 +459,10 @@ a.gotoinstance{
   font-size: 24px;
   margin: 0;
   padding: 0;
+  font-family: Dsignes Bold;  
+  color: #434142;
 }
+/* ***** MODIFY ***** */
 
 .user-edit-panel .ats-switch span.switch-right , .create-user-form .ats-switch span.switch-right{
   background-color: #da4f49;
@@ -489,10 +565,17 @@ a.gotoinstance{
 .left-navbar .panel{
   border-radius: 0;
 }
+
+/* ***** MODIFY ***** */
 .left-navbar .panel-heading {
   padding: 8px 15px;
   font-size: 15px;
+  font-family: Dsignes Bold;  
+  color: #666484;
+  background-color: #C2C3C8;
 }
+/* ***** MODIFY ***** */
+
 .left-navbar .panel-body {
   padding: 5px 15px;
   font-size: 14px;
@@ -515,12 +598,28 @@ a.gotoinstance{
 .left-navbar .panel-body li{
   margin: 0 -15px;
 }
+
+/* ***** MODIFY ***** */
 .left-navbar .panel-body li a{
   border-radius: 0;
   padding-left: 33px;
   padding-top: 8px;
   padding-bottom: 8px;
+  cursor: pointer;
+  font-family: Dsignes Light;
+  font-style: bold;
+  color: #666484;
 }
+
+.left-navbar .panel-body li.active > a,
+.left-navbar .panel-body li a:hover{
+  color: #FFFFFF;
+  background-color: #717175;
+  background-image: linear-gradient(to bottom, #717175, #717175);        
+  background-repeat: repeat-x;
+}  
+/* ***** MODIFY ***** */
+
 .left-navbar .panel-body li .noclusters{
   color: #808080;
   padding-left: 33px;
@@ -531,9 +630,8 @@ a.gotoinstance{
 .left-navbar .panel-body li.active a{
   background: #666;
 }
-
 .search-container{
-  position: relative;
+  position: relative; 
 }
 .search-container .close{
   position: absolute;
@@ -580,6 +678,7 @@ a.gotoinstance{
 
 ul.nav li > a{
   cursor: pointer;
+
 }
 
 .admin-filter{
@@ -638,6 +737,13 @@ table.no-border tr td{
 .table > thead > tr > th.vertical-top{
   vertical-align: top;
 }
+
+/* ***** MODIFY ***** */
+.table > thead {
+  font-family: Dsignes Bold;  
+  color: #434142;
+}
+/* ***** MODIFY ***** */
 
 .groups-pane table ul{
   list-style-type: none;
@@ -793,7 +899,7 @@ table.no-border tr td{
 }
 
 
-
+/* ***** MODIFY ***** */
 .btn-primary.active,
 .btn-warning.active,
 .btn-danger.active,
@@ -808,6 +914,7 @@ table.no-border tr td{
   border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
 }
 
+/*
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -841,6 +948,20 @@ table.no-border tr td{
 .btn-primary:active,
 .btn-primary.active {
   background-color: #003399 \9;
+}
+*/
+
+.btn-primary {
+    background: #666484;
+    color: #FFFFFF;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #352B5B;
+    color: #FFFFFF;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #312A4E;
+    box-shadow: none;
 }
 
 .btn-warning {
